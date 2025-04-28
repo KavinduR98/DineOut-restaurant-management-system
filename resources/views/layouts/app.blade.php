@@ -60,7 +60,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown">
-                                    {{-- <a class="dropdown-item" href="{{ route('roles.index') }}">Manage Roles</a> --}}
+                                    <a class="dropdown-item" href="{{ route('roles.index') }}">Manage Roles</a>
                                     <a class="dropdown-item" href="{{ route('users.index') }}">Manage Users</a>
                                 </div>
                             </li>
