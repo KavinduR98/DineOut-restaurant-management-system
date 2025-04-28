@@ -36,6 +36,15 @@
                                 @enderror
                             </div>
 
+                            <div class="mt-2">
+                                <label>Roles:</label>
+                                <select name="roles[]" class="form-select" multiple>
+                                    @foreach($roles as $role)
+                                        <option value="{{ $role->name }}" {{ $user->hasRole($role->name) ? "selected" : "" }}>{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class=" mt-2">
                                 <a class="btn btn-info" href="{{ route('users.index') }}">Back</a>
                                 <button class="btn btn-success">Submit</button>
