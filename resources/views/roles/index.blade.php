@@ -15,7 +15,9 @@
                             </div>
                         @endsession
 
-                        <a class="btn btn-success mb-3" href="{{ route('roles.create') }}">Create Role</a>
+                        @can('role-create')
+                            <a class="btn btn-success mb-3" href="{{ route('roles.create') }}">Create Role</a>
+                        @endcan
 
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -35,11 +37,17 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <a href="{{ route('roles.show', $role->id) }}"
-                                                    class="btn btn-info btn-sm">Show</a>
-                                                <a href="{{ route('roles.edit', $role->id) }}"
-                                                    class="btn btn-primary btn-sm">Edit</a>
-                                                <button class="btn btn-danger btn-sm">Delete</button>
+                                                @can('role-list')
+                                                    <a href="{{ route('roles.show', $role->id) }}"
+                                                        class="btn btn-info btn-sm">Show</a>
+                                                @endcan
+                                                @can('role-edit')
+                                                    <a href="{{ route('roles.edit', $role->id) }}"
+                                                        class="btn btn-primary btn-sm">Edit</a>
+                                                @endcan
+                                                @can('role-delete')
+                                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                                @endcan
                                             </form>
                                         </td>
                                     </tr>
