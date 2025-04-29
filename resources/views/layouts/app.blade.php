@@ -53,6 +53,9 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('concession.index') }}">Manage Concessions</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="settingsDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -92,6 +95,11 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- External JS -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
+    @yield('scripts')
 </body>
 
 </html>
