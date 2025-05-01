@@ -23,4 +23,4 @@ Route::post('/save_concession', [ConcessionController::class, 'store'])->name('c
 Route::get('/concession/{id}', [ConcessionController::class, 'show'])->name('concession.show');
 Route::get('/concession/edit/{id}', [ConcessionController::class, 'edit'])->name('concession.edit');
 Route::post('/concession/update/{id}', [ConcessionController::class, 'update'])->name('concession.update');
-Route::delete('/concession/delete/{id}', [ConcessionController::class, 'destroy'])->name('concession.destroy');
+Route::delete('/delete_concession/{id}', [ConcessionController::class, 'destroy'])->name('concession.destroy');

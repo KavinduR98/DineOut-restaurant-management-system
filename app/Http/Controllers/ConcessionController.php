@@ -167,6 +167,32 @@ class ConcessionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            
+            $concession = Concession::find($id);
+            if (!$concession) {
+                return response()->json(['status' => 'error', 'message' => 'Concession not found'], 404);
+            }
+            $filePath = $concession->image_path;
+         
+            if($filePath){
+                $baseUrl = url('/') . "/attachments/concession_images/";
+
+                $file =  str_replace($baseUrl, '', $filePath);
+                $file = public_path('attachments/concession_images').'/'.$file;
+               
+                if(file_exists($file)){
+                    unlink($file);
+                }  
+            }
+
+            // Delete attachment
+            ConcessionAttachment::where('concession_id', $id)->delete();
+            $concession->delete();
+            
+            return response()->json(['status' => 'success']);
+        } catch (Exception $ex) {
+            return response()->json(['status' => 'error', 'message' => $ex->getMessage()], 500);
+        }
     }
 }

@@ -5,13 +5,14 @@ $(document).ready(function () {
 
 });
 
+let concessionTable;
 function loadConcessionTable(){
     
     if ($.fn.DataTable.isDataTable("#tableConcessions")) {
         concessionTable.destroy();
     }
 
-    $("#tableConcessions").DataTable({
+    concessionTable = $("#tableConcessions").DataTable({
         processing: true,
         "scrollX": true,
         ajax: {
@@ -19,7 +20,6 @@ function loadConcessionTable(){
             type: "GET",
             data: {},
             dataSrc: function(response) {
-                console.log("AJAX Response:", response);
                 return response.data || response;
             },
         },
@@ -38,8 +38,8 @@ function loadConcessionTable(){
                 data: 'id',
                 render: function (data) {
                     return `
-                        <button onclick="edit(' + ${data} + ')" class="btn btn-primary btn-sm">Edit</button>
-                        <button onclick="_delete(' + ${data} + ')" class="btn btn-danger btn-sm">Delete</button>
+                        <button onclick="edit(${data})" class="btn btn-primary btn-sm">Edit</button>
+                        <button onclick="_delete(${data})" class="btn btn-danger btn-sm">Delete</button>
                     `;
                 }
             }
@@ -56,3 +56,29 @@ function loadConcessionTable(){
 
 }
 
+function _delete(id) {
+    if (confirm("Are you sure you want to delete this record?")) {
+        $.ajax({
+            type: "DELETE",
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            url: "/delete_concession/" + id,
+
+            success: function (response) {
+                console.log(response);
+                if (response.status === "success") {
+                    loadConcessionTable();
+                } else {
+                    alert("Failed to delete: " + (response.message || "Unknown error"));
+                }
+            },
+            error: function (xhr) {
+                console.error(xhr.responseText);
+                alert("An error occurred while deleting the concession.");
+            },
+        });
+    } else {
+        loadConcessionTable();
+    }
+}
