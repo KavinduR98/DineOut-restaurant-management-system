@@ -79,4 +79,65 @@ $(document).ready(function () {
         }
     });
 
+
+    $('#save_concession_form').submit(function (e) {
+        e.preventDefault();
+
+        if($('#btnsave').text().trim()=='Save'){
+            saveConcession();
+        }
+        else{
+            updateConcession();
+        }
+        
+    });
+
 });
+
+
+function saveConcession(){
+    alert("save");
+
+    var formData = new FormData();
+
+    formData.append('name', $('#txtName').val());
+    formData.append('description', $('#txtDescription').val());
+    formData.append('price', $('#txtPrice').val());
+
+    formData.append('file', dropzoneSingle.selectedImage);
+    formData.append('imageIcon', dropzoneSingle.imageIcon);
+    formData.append("image_status", dropzoneSingle.status);
+
+    $.ajax({
+        type: "POST",
+        url: '/save_concession',
+        data: formData,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 800000,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        beforeSend: function () {
+        },
+        success: function (response) {
+            console.log(response);
+
+            setTimeout(function () {
+                location.href = '/get_all_concessions';
+            }, 2000);
+
+        },
+        error: function (error) {
+        },
+        complete: function () {
+        }
+
+    });
+}
+
+
+function updateConcession(){
+    alert("update");
+}

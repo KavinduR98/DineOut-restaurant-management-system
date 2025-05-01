@@ -53,49 +53,35 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Create Concession') }}</div>
+                    <div class="card-header">
+                        <h5 ><strong>Create Concession</strong></h5>
+                    </div>
 
                     <div class="card-body">
-                        <form action="{{ route('concession.store') }}" method="POST">
-                            @csrf
-
+                        <form method="POST" id="save_concession_form">
                             <div class="mt-2">
                                 <label>Image:</label>
                                 <div action="#" class="dropzone" id="dropzone_single" required></div>
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
                             </div>
 
                             <div class="mt-2">
                                 <label>Name:</label>
-                                <input type="text" name="name" class="form-control" required>
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                <input type="text" name="name" id="txtName" class="form-control" required>
                             </div>
 
                             <div class="mt-2">
                                 <label>Description:</label>
-                                <textarea type="text" rows="5" name="description" id="description" class="form-control"></textarea>
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                <textarea type="text" rows="5" name="description" id="txtDescription" class="form-control"></textarea>
                             </div>
 
                             <div class="mt-2">
                                 <label>Price:</label>
-                                <input type="number" name="price" id="price" class="form-control" required>
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                <input type="number" name="price" id="txtPrice" class="form-control" required>
                             </div>
-
-                            
 
                             <div class=" mt-2">
                                 <a class="btn btn-info" href="{{ route('concession.index') }}">Back</a>
-                                <button class="btn btn-success">Submit</button>
+                                <button class="btn btn-success" id="btnsave">Save</button>
                             </div>
                         </form>
                     </div>

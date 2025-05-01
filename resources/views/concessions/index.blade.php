@@ -15,7 +15,7 @@
                             </div>
                         @endsession
 
-                        <a class="btn btn-success mb-3" href="{{ route('concession.create') }}">Create Concession</a>
+                        <a class="btn btn-success mb-3" href="/create_concession">Create Concession</a>
 
                         <table class="table table-striped table-bordered">
                             <thead>

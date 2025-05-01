@@ -54,7 +54,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('concession.index') }}">Manage Concessions</a>
+                                <a class="nav-link" href="/get_all_concessions">Manage Concessions</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="settingsDropdown" class="nav-link dropdown-toggle" href="#" role="button"

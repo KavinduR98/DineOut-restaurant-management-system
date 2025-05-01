@@ -16,9 +16,9 @@ Route::resource("users", UserController::class);
 Route::resource("roles", RoleController::class);
 
 // Concession
-Route::get('/concession', [ConcessionController::class, 'index'])->name('concession.index');
-Route::get('/concession/create', [ConcessionController::class, 'create'])->name('concession.create');
-Route::post('/concession/store', [ConcessionController::class, 'store'])->name('concession.store');
+Route::get('/get_all_concessions', [ConcessionController::class, 'index'])->name('concession.index');
+Route::get('/create_concession', [ConcessionController::class, 'create'])->name('concession.create');
+Route::post('/save_concession', [ConcessionController::class, 'store'])->name('concession.store');
 Route::get('/concession/{id}', [ConcessionController::class, 'show'])->name('concession.show');
 Route::get('/concession/edit/{id}', [ConcessionController::class, 'edit'])->name('concession.edit');
 Route::post('/concession/update/{id}', [ConcessionController::class, 'update'])->name('concession.update');
