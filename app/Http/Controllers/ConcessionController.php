@@ -128,6 +128,16 @@ class ConcessionController extends Controller
         }
     }
 
+
+    public function get_all_concessions(){
+        try {
+            $data = Concession::all();
+            return compact('data');
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+    }
+
     /**
      * Display the specified resource.
      */

@@ -59,6 +59,7 @@
 
                     <div class="card-body">
                         <form method="POST" id="save_concession_form">
+                            <input type="text" name="id" id="txtId" class="form-control" hidden>
                             <div class="mt-2">
                                 <label>Image:</label>
                                 <div action="#" class="dropzone" id="dropzone_single" required></div>
@@ -80,7 +81,7 @@
                             </div>
 
                             <div class=" mt-2">
-                                <a class="btn btn-info" href="{{ route('concession.index') }}">Back</a>
+                                <a class="btn btn-info" href="/concessions">Back</a>
                                 <button class="btn btn-success" id="btnsave">Save</button>
                             </div>
                         </form>

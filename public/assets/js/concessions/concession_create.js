@@ -125,7 +125,7 @@ function saveConcession(){
             console.log(response);
 
             setTimeout(function () {
-                location.href = '/get_all_concessions';
+                location.href = '/concessions';
             }, 2000);
 
         },

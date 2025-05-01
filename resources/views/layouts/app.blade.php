@@ -14,6 +14,10 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.0/css/dataTables.dataTables.min.css" />
+
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -54,7 +58,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="/get_all_concessions">Manage Concessions</a>
+                                <a class="nav-link" href="/concessions">Manage Concessions</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="settingsDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -98,7 +102,8 @@
 
     <!-- External JS -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/2.3.0/js/dataTables.min.js"></script>
     @yield('scripts')
 </body>
 

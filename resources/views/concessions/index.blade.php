@@ -17,7 +17,7 @@
 
                         <a class="btn btn-success mb-3" href="/create_concession">Create Concession</a>
 
-                        <table class="table table-striped table-bordered">
+                        <table class="table table-striped table-bordered" id="tableConcessions">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -34,4 +34,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script src="{{ URL::asset('assets/js/concessions/all_concession.js') }}"></script>
 @endsection
